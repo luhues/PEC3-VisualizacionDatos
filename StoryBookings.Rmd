@@ -1,0 +1,300 @@
+---
+title: "El viajero moderno y la fiebre de las opciones"
+author: "Lucia Huergo"
+date: "2026-05-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load packages
+
+```{r packages}
+library("ggmosaic")
+library("ggplot2")
+library("fitdistrplus")
+library("MASS")
+library("survival")
+library("ggstatsplot")
+library("tidyverse")
+library("plotly")
+library("DT")
+library("scales")
+```
+## PASO 1- Leemos los datos del fichero csv
+```{r load-data}
+hotels_raw <- read.csv("data/hotel_bookings.csv", stringsAsFactors = FALSE)
+
+glimpse(hotels_raw)
+summary(hotels_raw)
+dim(hotels_raw)
+```
+
+## PASO 2 - Data cleaning
+## 2.1 - Quito los vacios de children, babies y adults. y creo variables nuevas
+```{r cleaning-1}
+hotels <- hotels_raw %>%
+  mutate(
+    children = replace_na(children, 0),
+    babies = replace_na(babies, 0),
+    total_guests = adults + children + babies,
+    total_nights = stays_in_weekend_nights + stays_in_week_nights,
+    has_kids = if_else(children + babies > 0, "Con niños/bebés", "Sin niños"),
+    is_canceled_f = factor(is_canceled, levels = c(0, 1),
+                           labels = c("No cancelada", "Cancelada"))
+  )
+```
+
+## 2.2 - Filtro valores inesperados (p.e. menos de 10 niños)
+```{r cleaning-2}
+hotels <- hotels %>%
+  filter(
+    adults < 10,
+    children < 10,
+    babies < 10,
+    adr >= 0,
+    adr < 1000,
+    total_nights > 0,
+    total_guests > 0
+  )
+```
+
+## 2.3 Combino los datos de fecha de entrada para tener un string de fecha. 
+##  Creo hotel, market_segment y country como variables categóricas para los gráficos
+```{r cleaning-3}
+hotels <- hotels %>%
+  mutate(
+    arrival_date = dmy(
+      paste(arrival_date_day_of_month, arrival_date_month, arrival_date_year)
+    ),
+    month_label = month(arrival_date, label = TRUE, abbr = FALSE),
+    year_month = floor_date(arrival_date, unit = "month"),
+    hotel = factor(hotel),
+    market_segment = factor(market_segment),
+    country = factor(country)
+  )
+```
+
+## 3 - Creo variables para la narración
+```{r derived-vars}
+top_countries <- hotels %>%
+  count(country, sort = TRUE) %>%
+  slice_head(n = 8) %>%
+  pull(country)
+
+hotels_story <- hotels %>%
+  mutate(
+    country_group = if_else(country %in% top_countries, as.character(country), "Otros"),
+    booking_style = case_when(
+      lead_time < 30 ~ "Última hora",
+      lead_time < 90 ~ "Planificación media",
+      lead_time < 180 ~ "Planificación alta",
+      TRUE ~ "Muy anticipada"
+    ),
+    booking_style = factor(
+      booking_style,
+      levels = c("Última hora", "Planificación media", "Planificación alta", "Muy anticipada")
+    )
+  )
+```
+
+## 4 - 
+```{r kpis}
+kpi_total <- nrow(hotels_story)
+kpi_cancel <- mean(hotels_story$is_canceled)
+kpi_online <- mean(hotels_story$market_segment == "Online TA")
+kpi_city <- mean(hotels_story$hotel == "City Hotel")
+```
+
+### Reservas en cifras
+
+Row
+-------------------------------------
+
+### Total reservas
+`r scales::comma(kpi_total)`
+
+### % cancelación
+`r percent(kpi_cancel, accuracy = 0.1)`
+
+### % Online TA
+`r percent(kpi_online, accuracy = 0.1)`
+
+### % City Hotel
+`r percent(kpi_city, accuracy = 0.1)`
+
+
+## 5 - 
+```{r fig-leadtime, fig.height=5}
+p1 <- hotels_story %>%
+  ggplot(aes(x = lead_time, fill = is_canceled_f)) +
+  geom_histogram(bins = 60, alpha = 0.7, position = "identity") +
+  scale_fill_manual(values = c("#2C7FB8", "#D95F0E")) +
+  labs(
+    title = "La reserva como borrador: más antelación, más margen para cambiar",
+    x = "Días de antelación",
+    y = "Número de reservas",
+    fill = "Estado"
+  ) +
+  theme_minimal()
+
+ggplotly(p1)
+```
+## 6 -
+```{r country-summary}
+country_summary <- hotels_story %>%
+  filter(country %in% c("PRT", "GBR", "DEU", "FRA", "ESP")) %>%
+  group_by(country) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    lead_mean = mean(lead_time),
+    adr_mean = mean(adr),
+    .groups = "drop"
+  )
+```
+
+```{r fig-country, fig.height=5}
+p2 <- country_summary %>%
+  ggplot(aes(x = reorder(country, reservas), y = reservas, fill = cancel_rate)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_gradient(low = "#9ECAE1", high = "#E6550D", labels = scales::label_percent()) +
+  labs(
+    title = "No todos reservan igual",
+    x = "País",
+    y = "Reservas",
+    fill = "% cancelación"
+  ) +
+  theme_minimal()
+
+ggplotly(p2)
+```
+
+```{r table-country}
+datatable(
+  country_summary %>%
+    mutate(
+      cancel_rate = percent(cancel_rate, 0.1),
+      lead_mean = round(lead_mean, 1),
+      adr_mean = round(adr_mean, 1)
+    ),
+  rownames = FALSE,
+  options = list(pageLength = 5)
+)
+```
+
+
+## 7 - Familia
+```{r family-summary}
+family_summary <- hotels_story %>%
+  group_by(has_kids) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    lead_time_mean = mean(lead_time),
+    stay_mean = mean(total_nights),
+    .groups = "drop"
+  )
+```
+
+```{r fig-family, fig.height=5}
+p3 <- family_summary %>%
+  ggplot(aes(x = has_kids, y = cancel_rate, fill = has_kids,
+             text = paste0(
+               "Grupo: ", has_kids,
+               "<br>Reservas: ", reservas,
+               "<br>Cancelación: ", percent(cancel_rate, 0.1),
+               "<br>Antelación media: ", round(lead_time_mean, 1), " días",
+               "<br>Estancia media: ", round(stay_mean, 1), " noches"
+             ))) +
+  geom_col(show.legend = FALSE) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(
+    title = "Cuando hay niños, la reserva pesa más",
+    x = "",
+    y = "% cancelación"
+  ) +
+  theme_minimal()
+
+ggplotly(p3, tooltip = "text")
+```
+
+## 8 -  City Hotel vs Resort Hotel
+```{r hotel-lead-bins}
+hotels_story <- hotels_story %>%
+  mutate(
+    lead_bin = case_when(
+      lead_time <= 7 ~ "0-7 días",
+      lead_time <= 30 ~ "8-30 días",
+      lead_time <= 90 ~ "31-90 días",
+      lead_time <= 180 ~ "91-180 días",
+      lead_time <= 365 ~ "181-365 días",
+      TRUE ~ "Más de 365 días"
+    ),
+    lead_bin = factor(
+      lead_bin,
+      levels = c("0-7 días", "8-30 días", "31-90 días", "91-180 días", "181-365 días", "Más de 365 días")
+    )
+  )
+```
+
+Después resume el porcentaje de cancelación por tramo y hotel:
+
+```r
+```{r hotel-cancel-lead-summary}
+hotel_cancel_lead <- hotels_story %>%
+  group_by(hotel, lead_bin) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    .groups = "drop"
+  )
+```
+
+Y ahora el gráfico:
+
+```r
+```{r fig-hotel-lead-cancel, fig.height=5}
+hotel_cancel_lead <- hotels_story %>%
+  group_by(hotel, lead_bin) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    .groups = "drop"
+  )
+
+p4 <- hotel_cancel_lead %>%
+  ggplot(aes(x = lead_bin, y = cancel_rate, color = hotel, group = hotel)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  scale_y_continuous(labels = scales::label_percent()) +
+  labs(
+    title = "La cancelación crece con la anticipación, pero no igual en ambos hoteles",
+    x = "Anticipación de la reserva",
+    y = "% cancelación",
+    color = "Tipo de hotel"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top",
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 0)
+  )
+
+p4
+```
+```
+
+
+## 9 - Interpretación final
+
+El calendario del hotel no siempre representa viajes decididos.  
+Una parte importante de las reservas funciona como una opción temporal:
+se reserva pronto, se compara después y se cancela al final.
+
+Los patrones cambian según país, tipo de hotel y composición del viaje,
+pero la lógica general se mantiene: reservar ya no siempre significa comprometerse.
+
