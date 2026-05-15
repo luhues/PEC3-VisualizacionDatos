@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>index</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-67270d1595a62d14f123c043d4fb2f18.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="index_files/libs/plotly-binding-4.12.0/plotly.js"></script>
+
+<script src="index_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="index_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="index_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="index_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="index_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="index_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+
+<main class="content column-page" id="quarto-document-content">
+
+
+
+
+<div class="story-title">
+<p>El viajero moderno <br> y la fiebre de las opciones</p>
+</div>
+<div class="story-subtitle">
+<p>El viajero de hoy no reserva un hotel.<b> Reserva varios.</b><br> Reservar ya no siempre significa decidir. A veces significa explorar, comparar y dejar puertas abiertas.</p>
+</div>
+<div class="titulo-imagen">
+  <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/22f49b410e73d386527c8cf6318c8f31ef8029d8.jpg" alt="Acantilados del Algarve" width="100%">
+</div>
+<div class="story-intro">
+<p>Analizamos los datos de reservas de <b> dos hoteles de Portugal </b>. Uno en la ciudad, en Lisboa. El otro es un resort en Algarve.<br></p>
+<p>El viajero reserva con más de <b>100 días de antelación</b>, no porque sea previsor, sino porque quiere tener el control. Abre tres pestañas, compara precios, lee reseñas… y reserva dos o tres opciones a la vez. <b> Sin compromiso, sin riesgo </b>. Porque puede buscar opciones con cancelación gratuita.</p>
+<p>Es el nuevo ritual: llenar el calendario de <b>“posibles viajes”</b> como si fueran borradores. Todos confirmados. Todos cancelables. Solo uno se hará realidad.</p>
+<p>Y aquí está el dato que lo confirma: <b> el 37% de las reservas se cancelan. </b> No porque los planes fallen, sino porque el plan siempre fue elegir en el último momento. De hecho, la reserva online acumula <b> casi el 50% de todas las reservas.</b> Es precisamente donde más cancelaciones ocurren. Un clic para reservar, un clic para cancelar.</p>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card">
+<div class="kpi-value">118,548</div>
+<div class="kpi-label">Reservas analizadas</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-value">37.3%</div>
+<div class="kpi-label">Reservas canceladas</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-value">47.3%</div>
+<div class="kpi-label">Reservas Online</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-value">2015–2017</div>
+<div class="kpi-label">Periodo</div>
+</div>
+</div>
+<section id="una-promesa-frágil" class="level2">
+<h2 class="anchored" data-anchor-id="una-promesa-frágil">Una promesa frágil</h2>
+<div class="columns section-space">
+<div class="column" style="width:58%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-a9da2f29a494feb59982" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a9da2f29a494feb59982">{"x":{"data":[{"orientation":"v","width":0.54999999999999993,"base":0,"x":[1],"y":[0.62748422579883256],"text":"is_canceled_f: No cancelada<br />pct: 0.6274842<br />is_canceled_f: No cancelada","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(183,211,192,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"No cancelada","legendgroup":"No cancelada","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.54999999999999982,"base":0,"x":[2],"y":[0.37251577420116744],"text":"is_canceled_f: Cancelada<br />pct: 0.3725158<br />is_canceled_f: Cancelada","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(231,162,162,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Cancelada","legendgroup":"Cancelada","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1],"y":[0.62748422579883256],"text":"62.7%","hovertext":"is_canceled_f: No cancelada<br />pct: 0.6274842<br />is_canceled_f: No cancelada<br />etiqueta: 62.7%","textfont":{"size":18.897637795275593,"color":"rgba(74,74,74,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"No cancelada","legendgroup":"No cancelada","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2],"y":[0.37251577420116744],"text":"37.3%","hovertext":"is_canceled_f: Cancelada<br />pct: 0.3725158<br />is_canceled_f: Cancelada<br />etiqueta: 37.3%","textfont":{"size":18.897637795275593,"color":"rgba(74,74,74,1)"},"type":"scatter","mode":"text","hoveron":"points","name":"Cancelada","legendgroup":"Cancelada","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":24.634288086342885,"r":8.6342880863428828,"b":26.766293067662936,"l":33.673723536737242},"plot_bgcolor":"rgba(245,245,245,1)","paper_bgcolor":"rgba(245,245,245,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,2.6000000000000001],"tickmode":"array","ticktext":["No cancelada","Cancelada"],"tickvals":[1,2],"categoryorder":"array","categoryarray":["No cancelada","Cancelada"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.031374211289941632,0.65885843708877423],"tickmode":"array","ticktext":["0%","20%","40%","60%"],"tickvals":[0,0.20000000000000001,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["0%","20%","40%","60%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611},"title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"14285f0a6365":{"x":{},"y":{},"fill":{},"type":"bar"},"14281a443844":{"x":{},"y":{},"fill":{},"label":{}}},"cur_data":"14285f0a6365","visdat":{"14285f0a6365":["function (y) ","x"],"14281a443844":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="story-text">
+<h3 class="anchored">
+Un 37% de reservas se cancela
+</h3>
+<p>La historia empieza con una paradoja: el calendario de reservas parece lleno, pero una parte notable de esas promesas se deshace antes de la llegada.</p>
+<p>La reserva funciona muchas veces como una primera decisión reversible. No siempre es un compromiso final. A veces es simplemente una plaza guardada mientras el viajero sigue comparando opciones.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cuanto-antes-se-reserva-más-margen-para-cambiar" class="level2">
+<h2 class="anchored" data-anchor-id="cuanto-antes-se-reserva-más-margen-para-cambiar">Cuanto antes se reserva, más margen para cambiar</h2>
+<div class="columns section-space">
+<div class="column" style="width:58%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b1226cd5dcd2c9ad10f6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b1226cd5dcd2c9ad10f6">{"x":{"data":[{"x":[1,2,3,4,5,6],"y":[0.097318923412657174,0.27997665534804755,0.37830400217435617,0.44792298362644029,0.55504373720454125,0.67716284987277353],"text":["lead_bin: 0-7 días<br />cancel_rate: 0.09731892<br />group: 1","lead_bin: 8-30 días<br />cancel_rate: 0.27997666<br />group: 1","lead_bin: 31-90 días<br />cancel_rate: 0.37830400<br />group: 1","lead_bin: 91-180 días<br />cancel_rate: 0.44792298<br />group: 1","lead_bin: 181-365 días<br />cancel_rate: 0.55504374<br />group: 1","lead_bin: + 365 días<br />cancel_rate: 0.67716285<br />group: 1"],"type":"scatter","mode":"lines+markers","line":{"width":4.5354330708661417,"color":"rgba(183,211,192,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(183,211,192,1)","opacity":1,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(183,211,192,1)"}},"frame":null}],"layout":{"margin":{"t":24.634288086342885,"r":8.6342880863428828,"b":44.034869240348698,"l":50.942299709423011},"plot_bgcolor":"rgba(245,245,245,1)","paper_bgcolor":"rgba(245,245,245,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,6.5999999999999996],"tickmode":"array","ticktext":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"tickvals":[1,2,3,3.9999999999999996,5,6],"categoryorder":"array","categoryarray":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Anticipación de la reserva","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.068326727089651346,0.7061550461957794],"tickmode":"array","ticktext":["20%","40%","60%"],"tickvals":[0.20000000000000001,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["20%","40%","60%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"% cancelación","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1428132463c0":{"x":{},"y":{},"type":"scatter"},"14285e164d81":{"x":{},"y":{}}},"cur_data":"1428132463c0","visdat":{"1428132463c0":["function (y) ","x"],"14285e164d81":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="story-text">
+<h3 class="anchored">
+La cancelación aumenta cuando la reserva se hace con más anticipación
+</h3>
+<p>Reservar con mucha antelación puede parecer una señal de planificación, pero también abre más tiempo para arrepentirse.</p>
+<p>Aquí aparece una idea central del relato: algunas reservas no son el final del proceso de decisión, sino una forma de mantener opciones abiertas durante más tiempo.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="no-todos-reservan-igual" class="level2">
+<h2 class="anchored" data-anchor-id="no-todos-reservan-igual">No todos reservan igual</h2>
+<div class="columns section-space">
+<div class="column" style="width:58%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b5d9549bebe724b526d4" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b5d9549bebe724b526d4">{"x":{"data":[{"x":[0,7285,null,0,8544,null,0,10389,null,0,12094,null,0,47927],"y":[1,1,null,2,2,null,3,3,null,4,4,null,5,5],"text":["País: Alemania<br>Número de reservas: 7,285<br>Cancelación: 16.7%<br>Antelación media: 137.4 días<br>ADR medio: 104.4","País: Alemania<br>Número de reservas: 7,285<br>Cancelación: 16.7%<br>Antelación media: 137.4 días<br>ADR medio: 104.4",null,"País: España<br>Número de reservas: 8,544<br>Cancelación: 25.5%<br>Antelación media: 55 días<br>ADR medio: 117.3","País: España<br>Número de reservas: 8,544<br>Cancelación: 25.5%<br>Antelación media: 55 días<br>ADR medio: 117.3",null,"País: Francia<br>Número de reservas: 10,389<br>Cancelación: 18.6%<br>Antelación media: 82.4 días<br>ADR medio: 109.9","País: Francia<br>Número de reservas: 10,389<br>Cancelación: 18.6%<br>Antelación media: 82.4 días<br>ADR medio: 109.9",null,"País: Reino Unido<br>Número de reservas: 12,094<br>Cancelación: 20.3%<br>Antelación media: 127.6 días<br>ADR medio: 96.3","País: Reino Unido<br>Número de reservas: 12,094<br>Cancelación: 20.3%<br>Antelación media: 127.6 días<br>ADR medio: 96.3",null,"País: Portugal<br>Número de reservas: 47,927<br>Cancelación: 57.3%<br>Antelación media: 116.6 días<br>ADR medio: 93.2","País: Portugal<br>Número de reservas: 47,927<br>Cancelación: 57.3%<br>Antelación media: 116.6 días<br>ADR medio: 93.2"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(217,217,217,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[7285,8544,10389,12094,47927],"y":[1,2,3,4,5],"text":["País: Alemania<br>Número de reservas: 7,285<br>Cancelación: 16.7%<br>Antelación media: 137.4 días<br>ADR medio: 104.4","País: España<br>Número de reservas: 8,544<br>Cancelación: 25.5%<br>Antelación media: 55 días<br>ADR medio: 117.3","País: Francia<br>Número de reservas: 10,389<br>Cancelación: 18.6%<br>Antelación media: 82.4 días<br>ADR medio: 109.9","País: Reino Unido<br>Número de reservas: 12,094<br>Cancelación: 20.3%<br>Antelación media: 127.6 días<br>ADR medio: 96.3","País: Portugal<br>Número de reservas: 47,927<br>Cancelación: 57.3%<br>Antelación media: 116.6 días<br>ADR medio: 93.2"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":["rgba(183,211,192,1)","rgba(199,204,185,1)","rgba(187,210,191,1)","rgba(190,208,189,1)","rgba(231,162,162,1)"],"opacity":1,"size":22.677165354330711,"symbol":"circle","line":{"width":1.8897637795275593,"color":["rgba(183,211,192,1)","rgba(199,204,185,1)","rgba(187,210,191,1)","rgba(190,208,189,1)","rgba(231,162,162,1)"]}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[7285,8544,10389,12094,47927],"y":[1,2,3,4,5],"text":["7,285","8,544","10,389","12,094","47,927"],"hovertext":["País: Alemania<br>Número de reservas: 7,285<br>Cancelación: 16.7%<br>Antelación media: 137.4 días<br>ADR medio: 104.4","País: España<br>Número de reservas: 8,544<br>Cancelación: 25.5%<br>Antelación media: 55 días<br>ADR medio: 117.3","País: Francia<br>Número de reservas: 10,389<br>Cancelación: 18.6%<br>Antelación media: 82.4 días<br>ADR medio: 109.9","País: Reino Unido<br>Número de reservas: 12,094<br>Cancelación: 20.3%<br>Antelación media: 127.6 días<br>ADR medio: 96.3","País: Portugal<br>Número de reservas: 47,927<br>Cancelación: 57.3%<br>Antelación media: 116.6 días<br>ADR medio: 93.2"],"textfont":{"size":15.118110236220474,"color":"rgba(74,74,74,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"visible":false,"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0],"y":[1],"name":"7e16b5f64c2bdebdd18fdba3a485e5e4","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#B7D3C0"],[0.0033444816053511618,"#B7D3C0"],[0.0066889632107023237,"#B8D3C0"],[0.010033444816053484,"#B8D3C0"],[0.013377926421404715,"#B8D3C0"],[0.016722408026755876,"#B8D2BF"],[0.020066889632107038,"#B9D2BF"],[0.023411371237458199,"#B9D2BF"],[0.026755852842809361,"#B9D2BF"],[0.030100334448160522,"#B9D2BF"],[0.033444816053511683,"#BAD2BF"],[0.036789297658862845,"#BAD2BF"],[0.040133779264214076,"#BAD2BF"],[0.043478260869565237,"#BAD2BF"],[0.046822742474916398,"#BBD2BE"],[0.05016722408026756,"#BBD1BE"],[0.053511705685618721,"#BBD1BE"],[0.056856187290969883,"#BBD1BE"],[0.060200668896321044,"#BCD1BE"],[0.063545150501672212,"#BCD1BE"],[0.066889632107023436,"#BCD1BE"],[0.070234113712374605,"#BCD1BE"],[0.073578595317725759,"#BDD1BE"],[0.076923076923076927,"#BDD1BE"],[0.080267558528428082,"#BDD1BD"],[0.08361204013377925,"#BDD0BD"],[0.086956521739130405,"#BED0BD"],[0.090301003344481642,"#BED0BD"],[0.093645484949832797,"#BED0BD"],[0.096989966555183965,"#BED0BD"],[0.10033444816053512,"#BFD0BD"],[0.10367892976588629,"#BFD0BD"],[0.10702341137123744,"#BFD0BD"],[0.11036789297658861,"#BFD0BC"],[0.11371237458193983,"#BFCFBC"],[0.117056856187291,"#C0CFBC"],[0.12040133779264216,"#C0CFBC"],[0.12374581939799333,"#C0CFBC"],[0.12709030100334448,"#C0CFBC"],[0.13043478260869565,"#C1CFBC"],[0.13377926421404682,"#C1CFBC"],[0.13712374581939804,"#C1CFBC"],[0.14046822742474913,"#C1CFBB"],[0.14381270903010035,"#C2CFBB"],[0.14715719063545152,"#C2CEBB"],[0.15050167224080269,"#C2CEBB"],[0.15384615384615385,"#C2CEBB"],[0.157190635451505,"#C3CEBB"],[0.16053511705685625,"#C3CEBB"],[0.16387959866220733,"#C3CEBB"],[0.16722408026755856,"#C3CEBB"],[0.17056856187290972,"#C4CEBB"],[0.17391304347826089,"#C4CEBA"],[0.17725752508361203,"#C4CDBA"],[0.1806020066889632,"#C4CDBA"],[0.18394648829431443,"#C4CDBA"],[0.18729096989966554,"#C5CDBA"],[0.19063545150501676,"#C5CDBA"],[0.19397993311036785,"#C5CDBA"],[0.19732441471571907,"#C5CDBA"],[0.20066889632107024,"#C6CDBA"],[0.20401337792642141,"#C6CDB9"],[0.20735785953177249,"#C6CDB9"],[0.21070234113712374,"#C6CCB9"],[0.21404682274247497,"#C7CCB9"],[0.21739130434782605,"#C7CCB9"],[0.22073578595317728,"#C7CCB9"],[0.22408026755852839,"#C7CCB9"],[0.22742474916387961,"#C7CCB9"],[0.23076923076923084,"#C8CCB9"],[0.23411371237458192,"#C8CCB8"],[0.23745819397993317,"#C8CCB8"],[0.24080267558528426,"#C8CBB8"],[0.24414715719063548,"#C9CBB8"],[0.24749163879598671,"#C9CBB8"],[0.25083612040133779,"#C9CBB8"],[0.2541806020066889,"#C9CBB8"],[0.25752508361204013,"#CACBB8"],[0.26086956521739135,"#CACBB8"],[0.26421404682274247,"#CACBB8"],[0.26755852842809369,"#CACBB7"],[0.2709030100334448,"#CACBB7"],[0.27424749163879603,"#CBCAB7"],[0.27759197324414725,"#CBCAB7"],[0.28093645484949831,"#CBCAB7"],[0.28428093645484959,"#CBCAB7"],[0.28762541806020064,"#CCCAB7"],[0.29096989966555187,"#CCCAB7"],[0.29431438127090298,"#CCCAB7"],[0.2976588628762542,"#CCCAB6"],[0.30100334448160532,"#CCCAB6"],[0.30434782608695654,"#CDC9B6"],[0.30769230769230776,"#CDC9B6"],[0.31103678929765888,"#CDC9B6"],[0.31438127090300994,"#CDC9B6"],[0.31772575250836116,"#CEC9B6"],[0.32107023411371238,"#CEC9B6"],[0.32441471571906366,"#CEC9B6"],[0.32775919732441472,"#CEC9B5"],[0.33110367892976583,"#CEC9B5"],[0.33444816053511706,"#CFC8B5"],[0.33779264214046828,"#CFC8B5"],[0.3411371237458195,"#CFC8B5"],[0.34448160535117062,"#CFC8B5"],[0.34782608695652167,"#CFC8B5"],[0.35117056856187295,"#D0C8B5"],[0.35451505016722418,"#D0C8B5"],[0.35785953177257523,"#D0C8B5"],[0.36120401337792635,"#D0C8B4"],[0.36454849498327757,"#D1C7B4"],[0.3678929765886288,"#D1C7B4"],[0.37123745819398002,"#D1C7B4"],[0.37458193979933113,"#D1C7B4"],[0.37792642140468224,"#D1C7B4"],[0.38127090301003347,"#D2C7B4"],[0.38461538461538469,"#D2C7B4"],[0.38795986622073575,"#D2C7B4"],[0.39130434782608703,"#D2C7B3"],[0.39464882943143809,"#D2C6B3"],[0.39799331103678931,"#D3C6B3"],[0.40133779264214053,"#D3C6B3"],[0.40468227424749165,"#D3C6B3"],[0.40802675585284276,"#D3C6B3"],[0.41137123745819398,"#D4C6B3"],[0.41471571906354521,"#D4C6B3"],[0.41806020066889643,"#D4C6B3"],[0.42140468227424754,"#D4C6B2"],[0.4247491638795986,"#D4C6B2"],[0.42809364548494988,"#D5C5B2"],[0.4314381270903011,"#D5C5B2"],[0.43478260869565216,"#D5C5B2"],[0.43812709030100327,"#D5C5B2"],[0.4414715719063545,"#D5C5B2"],[0.44481605351170572,"#D6C5B2"],[0.44816053511705695,"#D6C5B2"],[0.45150501672240806,"#D6C5B2"],[0.45484949832775917,"#D6C5B1"],[0.4581939799331104,"#D6C4B1"],[0.46153846153846162,"#D7C4B1"],[0.46488294314381268,"#D7C4B1"],[0.46822742474916396,"#D7C4B1"],[0.47157190635451501,"#D7C4B1"],[0.47491638795986624,"#D7C4B1"],[0.47826086956521746,"#D8C4B1"],[0.48160535117056857,"#D8C4B1"],[0.48494983277591969,"#D8C4B0"],[0.48829431438127091,"#D8C3B0"],[0.49163879598662213,"#D8C3B0"],[0.49498327759197336,"#D9C3B0"],[0.49832775919732447,"#D9C3B0"],[0.50167224080267558,"#D9C3B0"],[0.50501672240802675,"#D9C3B0"],[0.50836120401337803,"#D9C2B0"],[0.51170568561872909,"#D9C2B0"],[0.51505016722408015,"#D9C2B0"],[0.51839464882943143,"#DAC2AF"],[0.52173913043478271,"#DAC2AF"],[0.52508361204013387,"#DAC1AF"],[0.52842809364548493,"#DAC1AF"],[0.5317725752508361,"#DAC1AF"],[0.53511705685618727,"#DAC1AF"],[0.53846153846153855,"#DAC1AF"],[0.54180602006688972,"#DAC0AF"],[0.54515050167224088,"#DAC0AF"],[0.54849498327759194,"#DBC0AF"],[0.55183946488294322,"#DBC0AF"],[0.55518394648829439,"#DBBFAE"],[0.55852842809364545,"#DBBFAE"],[0.56187290969899661,"#DBBFAE"],[0.56521739130434778,"#DBBFAE"],[0.56856187290969906,"#DBBFAE"],[0.57190635451505023,"#DBBEAE"],[0.5752508361204014,"#DBBEAE"],[0.57859531772575246,"#DCBEAE"],[0.58193979933110374,"#DCBEAE"],[0.5852842809364549,"#DCBEAE"],[0.58862876254180607,"#DCBDAD"],[0.59197324414715724,"#DCBDAD"],[0.5953177257525083,"#DCBDAD"],[0.59866220735785958,"#DCBDAD"],[0.60200668896321086,"#DCBCAD"],[0.60535117056856191,"#DCBCAD"],[0.60869565217391297,"#DCBCAD"],[0.61204013377926425,"#DDBCAD"],[0.61538461538461542,"#DDBCAD"],[0.61872909698996659,"#DDBBAD"],[0.62207357859531753,"#DDBBAD"],[0.62541806020066881,"#DDBBAC"],[0.62876254180601998,"#DDBBAC"],[0.63210702341137126,"#DDBAAC"],[0.63545150501672254,"#DDBAAC"],[0.63879598662207349,"#DDBAAC"],[0.64214046822742465,"#DDBAAC"],[0.64548494983277593,"#DEBAAC"],[0.6488294314381271,"#DEB9AC"],[0.65217391304347805,"#DEB9AC"],[0.65551839464882933,"#DEB9AC"],[0.65886287625418061,"#DEB9AC"],[0.66220735785953178,"#DEB9AB"],[0.66555183946488305,"#DEB8AB"],[0.668896321070234,"#DEB8AB"],[0.67224080267558517,"#DEB8AB"],[0.67558528428093645,"#DEB8AB"],[0.67892976588628762,"#DFB7AB"],[0.6822742474916389,"#DFB7AB"],[0.68561872909698984,"#DFB7AB"],[0.68896321070234112,"#DFB7AB"],[0.69230769230769229,"#DFB7AB"],[0.69565217391304357,"#DFB6AA"],[0.69899665551839452,"#DFB6AA"],[0.70234113712374568,"#DFB6AA"],[0.70568561872909696,"#DFB6AA"],[0.70903010033444813,"#DFB5AA"],[0.71237458193979941,"#E0B5AA"],[0.71571906354515036,"#E0B5AA"],[0.71906354515050164,"#E0B5AA"],[0.72240802675585281,"#E0B5AA"],[0.72575250836120409,"#E0B4AA"],[0.72909698996655503,"#E0B4AA"],[0.7324414715719062,"#E0B4A9"],[0.73578595317725748,"#E0B4A9"],[0.73913043478260876,"#E0B4A9"],[0.74247491638795993,"#E0B3A9"],[0.74581939799331087,"#E0B3A9"],[0.74916387959866215,"#E1B3A9"],[0.75250836120401332,"#E1B3A9"],[0.7558528428093646,"#E1B2A9"],[0.75919732441471577,"#E1B2A9"],[0.76254180602006683,"#E1B2A9"],[0.76588628762541799,"#E1B2A9"],[0.76923076923076927,"#E1B2A8"],[0.77257525083612044,"#E1B1A8"],[0.77591973244147139,"#E1B1A8"],[0.77926421404682267,"#E1B1A8"],[0.78260869565217384,"#E1B1A8"],[0.78595317725752512,"#E2B0A8"],[0.78929765886287628,"#E2B0A8"],[0.79264214046822734,"#E2B0A8"],[0.79598662207357851,"#E2B0A8"],[0.79933110367892979,"#E2B0A8"],[0.80267558528428096,"#E2AFA7"],[0.80602006688963224,"#E2AFA7"],[0.80936454849498318,"#E2AFA7"],[0.81270903010033435,"#E2AFA7"],[0.81605351170568563,"#E2AEA7"],[0.81939799331103691,"#E2AEA7"],[0.82274247491638786,"#E3AEA7"],[0.82608695652173902,"#E3AEA7"],[0.8294314381270903,"#E3AEA7"],[0.83277591973244147,"#E3ADA7"],[0.83612040133779275,"#E3ADA7"],[0.8394648829431437,"#E3ADA6"],[0.84280936454849498,"#E3ADA6"],[0.84615384615384615,"#E3ACA6"],[0.84949832775919742,"#E3ACA6"],[0.85284280936454837,"#E3ACA6"],[0.85618729096989954,"#E3ACA6"],[0.85953177257525082,"#E4ACA6"],[0.86287625418060199,"#E4ABA6"],[0.86622073578595327,"#E4ABA6"],[0.86956521739130421,"#E4ABA6"],[0.87290969899665549,"#E4ABA6"],[0.87625418060200666,"#E4AAA5"],[0.87959866220735794,"#E4AAA5"],[0.88294314381270911,"#E4AAA5"],[0.88628762541806005,"#E4AAA5"],[0.88963210702341133,"#E4A9A5"],[0.8929765886287625,"#E4A9A5"],[0.89632107023411378,"#E4A9A5"],[0.89966555183946473,"#E5A9A5"],[0.90301003344481601,"#E5A9A5"],[0.90635451505016718,"#E5A8A5"],[0.90969899665551845,"#E5A8A5"],[0.91304347826086962,"#E5A8A4"],[0.91638795986622057,"#E5A8A4"],[0.91973244147157185,"#E5A7A4"],[0.92307692307692313,"#E5A7A4"],[0.9264214046822743,"#E5A7A4"],[0.92976588628762524,"#E5A7A4"],[0.93311036789297652,"#E5A7A4"],[0.93645484949832769,"#E5A6A4"],[0.93979933110367897,"#E6A6A4"],[0.94314381270903014,"#E6A6A4"],[0.9464882943143812,"#E6A6A3"],[0.94983277591973236,"#E6A5A3"],[0.95317725752508364,"#E6A5A3"],[0.95652173913043481,"#E6A5A3"],[0.95986622073578609,"#E6A5A3"],[0.96321070234113704,"#E6A5A3"],[0.96655518394648821,"#E6A4A3"],[0.96989966555183948,"#E6A4A3"],[0.97324414715719065,"#E6A4A3"],[0.97658862876254171,"#E6A4A3"],[0.97993311036789288,"#E7A3A3"],[0.98327759197324416,"#E7A3A2"],[0.98662207357859533,"#E7A3A2"],[0.98996655518394661,"#E7A3A2"],[0.99331103678929755,"#E7A2A2"],[0.99665551839464872,"#E7A2A2"],[1,"#E7A2A2"]],"colorbar":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"thickness":23.039999999999996,"title":"% cancelación","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"tickmode":"array","ticktext":["20%","30%","40%","50%"],"tickvals":[0.082171688350850078,0.32756042599489871,0.57294916363894732,0.81833790128299577],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":24.634288086342885,"r":8.6342880863428828,"b":44.034869240348698,"l":88.933167289331692},"plot_bgcolor":"rgba(245,245,245,1)","paper_bgcolor":"rgba(245,245,245,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-2827.6930000000002,59381.553],"tickmode":"array","ticktext":["0","20000","40000"],"tickvals":[0,20000,40000],"categoryorder":"array","categoryarray":["0","20000","40000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"Reservas","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,5.5999999999999996],"tickmode":"array","ticktext":["Alemania","España","Francia","Reino Unido","Portugal"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["Alemania","España","Francia","Reino Unido","Portugal"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611},"title":{"text":"% cancelación","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"14286cea3555":{"x":{},"y":{},"colour":{},"text":{},"xend":{},"yend":{},"type":"scatter"},"14281bbc1003":{"x":{},"y":{},"colour":{},"text":{}},"1428496c7466":{"x":{},"y":{},"colour":{},"text":{},"label":{}},"1428600640f2":{"x":{}}},"cur_data":"14286cea3555","visdat":{"14286cea3555":["function (y) ","x"],"14281bbc1003":["function (y) ","x"],"1428496c7466":["function (y) ","x"],"1428600640f2":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="story-text">
+<h3 class="anchored">
+¿Quién reserva más?¿Está relacionado con el porcentaje de cancelación?
+</h3>
+<p>Los países no solo aportan cantidades distintas de viajeros. También reflejan diferentes ritmos de planificación, diferentes distancias y, probablemente, distintos tipos de viaje.</p>
+<p>Portugal, el país que más reservas aporta en su propia tierra, es también el que más cancela. Reino Unido le sigue en número de reservas, pero no en nivel de cancelaciones.</p>
+<p>Eso significa que la cancelación no es solo un rasgo individual, sino una conducta que también depende del contexto desde el que se reserva.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="el-precio-siempre-es-importante" class="level2">
+<h2 class="anchored" data-anchor-id="el-precio-siempre-es-importante">El precio siempre es importante</h2>
+<div class="columns section-space">
+<div class="column" style="width:58%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-4b7ae8821de11b4b8161" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4b7ae8821de11b4b8161">{"x":{"data":[{"x":[1,2,3,4,5,6],"y":[92.295086251688659,108.75880517826825,106.77387511041653,109.3409930260764,95.300260096780192,78.911838422391853],"text":["Anticipación: 0-7 días<br>Precio medio: 92.3 €<br>Reservas: 19,246","Anticipación: 8-30 días<br>Precio medio: 108.8 €<br>Reservas: 18,848","Anticipación: 31-90 días<br>Precio medio: 106.8 €<br>Reservas: 29,434","Anticipación: 91-180 días<br>Precio medio: 109.3 €<br>Reservas: 26,384","Anticipación: 181-365 días<br>Precio medio: 95.3 €<br>Reservas: 21,492","Anticipación: + 365 días<br>Precio medio: 78.9 €<br>Reservas: 3,144"],"type":"scatter","mode":"lines+markers","line":{"width":4.5354330708661417,"color":"rgba(183,211,192,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(183,211,192,1)","opacity":1,"size":13.228346456692915,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(183,211,192,1)"}},"frame":null},{"x":[1,2,3,4,5,6],"y":[92.295086251688659,108.75880517826825,106.77387511041653,109.3409930260764,95.300260096780192,78.911838422391853],"text":[92.299999999999997,108.8,106.8,109.3,95.299999999999997,78.900000000000006],"hovertext":["Anticipación: 0-7 días<br>Precio medio: 92.3 €<br>Reservas: 19,246","Anticipación: 8-30 días<br>Precio medio: 108.8 €<br>Reservas: 18,848","Anticipación: 31-90 días<br>Precio medio: 106.8 €<br>Reservas: 29,434","Anticipación: 91-180 días<br>Precio medio: 109.3 €<br>Reservas: 26,384","Anticipación: 181-365 días<br>Precio medio: 95.3 €<br>Reservas: 21,492","Anticipación: + 365 días<br>Precio medio: 78.9 €<br>Reservas: 3,144"],"textfont":{"size":15.118110236220474,"color":"rgba(74,74,74,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":24.634288086342885,"r":8.6342880863428828,"b":44.034869240348698,"l":50.942299709423011},"plot_bgcolor":"rgba(245,245,245,1)","paper_bgcolor":"rgba(245,245,245,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,6.5999999999999996],"tickmode":"array","ticktext":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"tickvals":[1,2,3,3.9999999999999996,5,6],"categoryorder":"array","categoryarray":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Anticipación de la reserva","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[77.390380692207628,110.86245075626063],"tickmode":"array","ticktext":["80","90","100","110"],"tickvals":[80,90,100,110],"categoryorder":"array","categoryarray":["80","90","100","110"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"Precio medio por noche (€)","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1428714f4483":{"x":{},"y":{},"text":{},"type":"scatter"},"14283d5f50d7":{"x":{},"y":{},"text":{}},"14285bf96ae1":{"x":{},"y":{},"text":{},"label":{}}},"cur_data":"1428714f4483","visdat":{"1428714f4483":["function (y) ","x"],"14283d5f50d7":["function (y) ","x"],"14285bf96ae1":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="story-text">
+<h3 class="anchored">
+¿Sale más barato reservar con más antelación?
+</h3>
+<p>La antelación no solo cambia la probabilidad de cancelar. También puede influir en el precio medio que paga el viajero.</p>
+<p>Aquí comparamos el ADR medio por tramos de antelación para ver si planificar con más tiempo se traduce realmente en reservas más baratas, o si el precio depende de otros factores como la temporada, el tipo de hotel o la demanda.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="dos-hoteles-dos-ritmos-de-decisión" class="level2">
+<h2 class="anchored" data-anchor-id="dos-hoteles-dos-ritmos-de-decisión">Dos hoteles, dos ritmos de decisión</h2>
+<div class="columns section-space">
+<div class="column" style="width:58%;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-2de65e2be1556956b820" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2de65e2be1556956b820">{"x":{"data":[{"x":[1,1,null,2,2,null,3,3,null,4,4,null,5,5,null,6,6],"y":[0.12329940062791361,0.066056096164854042,null,0.30996722883862199,0.22076692441218243,null,0.3998843150486841,0.32677255985267034,null,0.48043956043956043,0.37561094819159335,null,0.62765359201462112,0.41288191577208916,null,0.71106178320384761,0.46938775510204084],"text":["Hotel: City Hotel<br>Anticipación: 0-7 días<br>% cancelación: 12.3%<br>Reservas: 10,511","Hotel: Resort Hotel<br>Anticipación: 0-7 días<br>% cancelación: 6.6%<br>Reservas: 8,735",null,"Hotel: City Hotel<br>Anticipación: 8-30 días<br>% cancelación: 31.0%<br>Reservas: 12,511","Hotel: Resort Hotel<br>Anticipación: 8-30 días<br>% cancelación: 22.1%<br>Reservas: 6,337",null,"Hotel: City Hotel<br>Anticipación: 31-90 días<br>% cancelación: 40.0%<br>Reservas: 20,746","Hotel: Resort Hotel<br>Anticipación: 31-90 días<br>% cancelación: 32.7%<br>Reservas: 8,688",null,"Hotel: City Hotel<br>Anticipación: 91-180 días<br>% cancelación: 48.0%<br>Reservas: 18,200","Hotel: Resort Hotel<br>Anticipación: 91-180 días<br>% cancelación: 37.6%<br>Reservas: 8,184",null,"Hotel: City Hotel<br>Anticipación: 181-365 días<br>% cancelación: 62.8%<br>Reservas: 14,226","Hotel: Resort Hotel<br>Anticipación: 181-365 días<br>% cancelación: 41.3%<br>Reservas: 7,266",null,"Hotel: City Hotel<br>Anticipación: + 365 días<br>% cancelación: 71.1%<br>Reservas: 2,703","Hotel: Resort Hotel<br>Anticipación: + 365 días<br>% cancelación: 46.9%<br>Reservas: 441"],"type":"scatter","mode":"lines","line":{"width":3.7795275590551185,"color":"rgba(217,217,217,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.91249999999999998,1.9125000000000001,2.9125000000000001,3.9125000000000001,4.9124999999999996,5.9124999999999996],"y":[0.12329940062791361,0.30996722883862199,0.3998843150486841,0.48043956043956043,0.62765359201462112,0.71106178320384761],"text":["Hotel: City Hotel<br>Anticipación: 0-7 días<br>% cancelación: 12.3%<br>Reservas: 10,511","Hotel: City Hotel<br>Anticipación: 8-30 días<br>% cancelación: 31.0%<br>Reservas: 12,511","Hotel: City Hotel<br>Anticipación: 31-90 días<br>% cancelación: 40.0%<br>Reservas: 20,746","Hotel: City Hotel<br>Anticipación: 91-180 días<br>% cancelación: 48.0%<br>Reservas: 18,200","Hotel: City Hotel<br>Anticipación: 181-365 días<br>% cancelación: 62.8%<br>Reservas: 14,226","Hotel: City Hotel<br>Anticipación: + 365 días<br>% cancelación: 71.1%<br>Reservas: 2,703"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(183,211,192,1)","opacity":1,"size":15.118110236220474,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(183,211,192,1)"}},"hoveron":"points","name":"City Hotel","legendgroup":"City Hotel","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.0874999999999999,2.0874999999999999,3.0874999999999999,4.0875000000000004,5.0875000000000004,6.0875000000000004],"y":[0.066056096164854042,0.22076692441218243,0.32677255985267034,0.37561094819159335,0.41288191577208916,0.46938775510204084],"text":["Hotel: Resort Hotel<br>Anticipación: 0-7 días<br>% cancelación: 6.6%<br>Reservas: 8,735","Hotel: Resort Hotel<br>Anticipación: 8-30 días<br>% cancelación: 22.1%<br>Reservas: 6,337","Hotel: Resort Hotel<br>Anticipación: 31-90 días<br>% cancelación: 32.7%<br>Reservas: 8,688","Hotel: Resort Hotel<br>Anticipación: 91-180 días<br>% cancelación: 37.6%<br>Reservas: 8,184","Hotel: Resort Hotel<br>Anticipación: 181-365 días<br>% cancelación: 41.3%<br>Reservas: 7,266","Hotel: Resort Hotel<br>Anticipación: + 365 días<br>% cancelación: 46.9%<br>Reservas: 441"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(231,162,162,1)","opacity":1,"size":15.118110236220474,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,162,162,1)"}},"hoveron":"points","name":"Resort Hotel","legendgroup":"Resort Hotel","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":24.634288086342885,"r":8.6342880863428828,"b":44.034869240348698,"l":50.942299709423011},"plot_bgcolor":"rgba(245,245,245,1)","paper_bgcolor":"rgba(245,245,245,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,6.5999999999999996],"tickmode":"array","ticktext":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"tickvals":[1,2,3,3.9999999999999996,5,6],"categoryorder":"array","categoryarray":["0-7 días","8-30 días","31-90 días","91-180 días","181-365 días","+ 365 días"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Anticipación de la reserva","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.033805811812904367,0.74331206755579726],"tickmode":"array","ticktext":["20%","40%","60%"],"tickvals":[0.20000000000000001,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["20%","40%","60%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(74,74,74,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"% cancelación","font":{"color":"rgba(74,74,74,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611},"orientation":"h","x":0.5,"y":1.02,"xanchor":"center","yanchor":"bottom","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"142879d51cc6":{"x":{},"y":{},"colour":{},"text":{},"type":"scatter"},"142844155f34":{"x":{},"y":{},"colour":{},"text":{}}},"cur_data":"142879d51cc6","visdat":{"142879d51cc6":["function (y) ","x"],"142844155f34":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="story-text">
+<h3 class="anchored">
+¿Hay diferencia entre un hotel de ciudad y un resort?
+</h3>
+<p>Aquí la historia se divide en dos. Un hotel urbano y uno vacacional no representan el mismo tipo de decisión ni el mismo tipo de viaje.</p>
+<p>Por eso no basta con decir que “reservar antes aumenta la cancelación”. También importa qué tipo de experiencia hay detrás de esa reserva.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones">Conclusiones</h2>
+<div class="story-fin">
+<p>El calendario del hotel no siempre representa viajes decididos. Muchas reservas son, en realidad, decisiones provisionales: promesas abiertas que se sostienen mientras el viajero gana tiempo para comparar, pensar o cambiar de idea.</p>
+<p>Los datos muestran que esa lógica cambia según la anticipación, el país o el tipo de hotel. Pero la idea principal se mantiene: <b> en el turismo actual, reservar muchas veces ya no significa cerrar un plan, sino gestionar posibilidades.</b></p>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
