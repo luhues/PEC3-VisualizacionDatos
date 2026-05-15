@@ -1,0 +1,533 @@
+---
+format:
+  html:
+    theme: cosmo
+    toc: false
+    page-layout: full
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(lubridate)
+library(plotly)
+library(DT)
+library(scales)
+library(htmltools)
+library(countrycode)
+
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+```{r}
+#| label: load-data
+#| include: false
+
+## Leemos los datos
+hotels_raw <- read.csv("data/hotel_bookings.csv", stringsAsFactors = FALSE)
+
+## Limpiamos los datos
+hotels <- hotels_raw %>%
+  mutate(
+    children = tidyr::replace_na(children, 0),
+    babies = tidyr::replace_na(babies, 0),
+    total_guests = adults + children + babies,
+    total_nights = stays_in_weekend_nights + stays_in_week_nights,
+    has_kids = if_else(children + babies > 0, "Con niños/bebés", "Sin niños"),
+    is_canceled_f = factor(
+      is_canceled,
+      levels = c(0, 1),
+      labels = c("No cancelada", "Cancelada")
+    )
+  ) %>% 
+  ## Filtro valores inesperados (p.e. menos de 10 niños)
+  ## Combino los datos de fecha de entrada para tener un string de fecha. 
+  ##  Creo hotel, market_segment y country como variables categóricas para los gráficos
+  filter(
+    adults < 10,
+    children < 10,
+    babies < 10,
+    adr >= 0,
+    adr < 1000,
+    total_nights > 0,
+    total_guests > 0
+  ) %>%
+  mutate(
+    arrival_date = dmy(
+      paste(arrival_date_day_of_month, arrival_date_month, arrival_date_year)
+    ),
+    month_label = month(arrival_date, label = TRUE, abbr = FALSE),
+    year_month = floor_date(arrival_date, unit = "month"),
+    hotel = factor(hotel),
+    market_segment = factor(market_segment),
+    country = factor(country)
+  )
+
+## Creo variables para la narración
+top_countries <- hotels %>%
+  count(country, sort = TRUE) %>%
+  slice_head(n = 8) %>%
+  pull(country)
+
+hotels_story <- hotels %>%
+  mutate(
+    country_group = if_else(country %in% top_countries, as.character(country), "Otros"),
+    booking_style = case_when(
+      lead_time < 30 ~ "Última hora",
+      lead_time < 90 ~ "Planificación media",
+      lead_time < 180 ~ "Planificación alta",
+      TRUE ~ "Muy anticipada"
+    ),
+    booking_style = factor(
+      booking_style,
+      levels = c("Última hora", "Planificación media", "Planificación alta", "Muy anticipada")
+    ),
+    lead_bin = case_when(
+      lead_time <= 7 ~ "0-7 días",
+      lead_time <= 30 ~ "8-30 días",
+      lead_time <= 90 ~ "31-90 días",
+      lead_time <= 180 ~ "91-180 días",
+      lead_time <= 365 ~ "181-365 días",
+      TRUE ~ "+ 365 días"
+    ),
+    lead_bin = factor(
+      lead_bin,
+      levels = c("0-7 días", "8-30 días", "31-90 días", "91-180 días", "181-365 días", "+ 365 días")
+    )
+  )
+```
+
+```{r}
+#| label: kpis
+#| include: false
+
+kpi_total <- nrow(hotels_story)
+kpi_cancel <- mean(hotels_story$is_canceled)
+kpi_online <- mean(hotels_story$market_segment == "Online TA")
+kpi_city <- mean(hotels_story$hotel == "City Hotel")
+```
+
+::: {.story-title}
+El viajero moderno <br> y la fiebre de las opciones
+:::
+
+::: {.story-subtitle}
+El viajero de hoy no reserva un hotel.<b> Reserva varios.</b><br>
+Reservar ya no siempre significa decidir. A veces significa explorar, comparar y dejar puertas abiertas.
+:::
+
+```{=html}
+<div class="titulo-imagen">
+  <img src="https://pplx-res.cloudinary.com/image/upload/pplx_search_images/22f49b410e73d386527c8cf6318c8f31ef8029d8.jpg"
+       alt="Acantilados del Algarve"
+       width="100%" />
+</div>
+```
+
+::: {.story-intro}
+Analizamos los datos de reservas de <b> dos hoteles de Portugal </b>. Uno en la ciudad, en Lisboa. El otro es un resort en Algarve.<br>
+
+El viajero reserva con más de <b>100 días de antelación</b>, no porque sea previsor, sino porque quiere tener el control. Abre tres pestañas, compara precios, lee reseñas… y reserva dos o tres opciones a la vez. <b> Sin compromiso, sin riesgo </b>. Porque puede buscar opciones con cancelación gratuita.
+
+Es el nuevo ritual: llenar el calendario de <b>"posibles viajes"</b> como si fueran borradores. Todos confirmados. Todos cancelables. Solo uno se hará realidad.
+
+Y aquí está el dato que lo confirma: <b> el 37% de las reservas se cancelan. </b> No porque los planes fallen, sino porque el plan siempre fue elegir en el último momento. 
+De hecho, la reserva online acumula <b> casi el 50% de todas las reservas.</b> Es precisamente donde más cancelaciones ocurren. Un clic para reservar, un clic para cancelar.
+:::
+
+::: {.kpi-grid}
+
+::: {.kpi-card}
+```{=html}
+<div class="kpi-value">`r scales::comma(kpi_total)`</div>
+<div class="kpi-label">Reservas analizadas</div>
+```
+:::
+
+::: {.kpi-card}
+```{=html}
+<div class="kpi-value">`r scales::percent(kpi_cancel, accuracy = 0.1)`</div>
+<div class="kpi-label">Reservas canceladas</div>
+```
+:::
+
+::: {.kpi-card}
+```{=html}
+<div class="kpi-value">`r scales::percent(kpi_online, accuracy = 0.1)`</div>
+<div class="kpi-label">Reservas Online</div>
+```
+:::
+
+::: {.kpi-card}
+```{=html}
+<div class="kpi-value">2015–2017</div>
+<div class="kpi-label">Periodo</div>
+```
+:::
+
+:::
+
+
+## Una promesa frágil
+
+:::::: {.columns .section-space}
+::: {.column width="58%"}
+```{r}
+#| echo: false
+
+cancel_summary <- hotels_story %>%
+  count(is_canceled_f) %>%
+  mutate(
+    pct = n / sum(n),
+    etiqueta = scales::percent(pct, accuracy = 0.1)
+  )
+
+p0 <- ggplot(cancel_summary, aes(x = is_canceled_f, y = pct, fill = is_canceled_f)) +
+  geom_col(width = 0.55, show.legend = FALSE) +
+  geom_text(aes(label = etiqueta), vjust = -0.5, size = 5, color = "#4a4a4a") +
+  scale_fill_manual(values = c(
+    "No cancelada" = "#B7D3C0",
+    "Cancelada" = "#E7A2A2"
+  )) +
+  scale_y_continuous(labels = scales::label_percent()) +
+  labs(
+   # title = "Un 37% de reservas se cancela",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#3f3f3f"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(color = "#4a4a4a"),
+    axis.text.y = element_text(color = "#4a4a4a"),
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    panel.background = element_rect(fill = "#F5F5F5", color = NA)
+  )
+
+plotly::ggplotly(p0)
+```
+:::
+
+:::: {.column width="42%"}
+::: story-text
+<h3>Un 37% de reservas se cancela</h3>
+La historia empieza con una paradoja: el calendario de reservas parece lleno, pero una parte notable de esas promesas se deshace antes de la llegada.
+
+La reserva funciona muchas veces como una primera decisión reversible. No siempre es un compromiso final. A veces es simplemente una plaza guardada mientras el viajero sigue comparando opciones.
+:::
+::::
+::::::
+
+## Cuanto antes se reserva, más margen para cambiar
+
+:::::: {.columns .section-space}
+::: {.column width="58%"}
+```{r}
+#| echo: false
+
+lead_summary <- hotels_story %>%
+  group_by(lead_bin) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    .groups = "drop"
+  )
+
+p1 <- ggplot(lead_summary, aes(x = lead_bin, y = cancel_rate, group = 1)) +
+  geom_line(color = "#B7D3C0", linewidth = 1.2) +
+  geom_point(color = "#B7D3C0", size = 3) +
+  scale_y_continuous(labels = scales::label_percent()) +
+  labs(
+   # title = "La cancelación aumenta cuando la reserva se hace con más anticipación",
+    x = "Anticipación de la reserva",
+    y = "% cancelación"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#3f3f3f"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(color = "#4a4a4a"),
+    axis.text.y = element_text(color = "#4a4a4a"),
+    axis.title = element_text(color = "#4a4a4a"),
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    panel.background = element_rect(fill = "#F5F5F5", color = NA)
+  )
+
+plotly::ggplotly(p1)
+```
+:::
+
+:::: {.column width="42%"}
+::: story-text
+<h3>La cancelación aumenta cuando la reserva se hace con más anticipación</h3>
+Reservar con mucha antelación puede parecer una señal de planificación, pero también abre más tiempo para arrepentirse.
+
+Aquí aparece una idea central del relato: algunas reservas no son el final del proceso de decisión, sino una forma de mantener opciones abiertas durante más tiempo.
+:::
+::::
+::::::
+
+## No todos reservan igual
+
+:::::: {.columns .section-space}
+::: {.column width="58%"}
+```{r}
+#| echo: false
+
+country_summary <- hotels_story %>%
+  filter(country %in% c("PRT", "GBR", "DEU", "FRA", "ESP")) %>%
+  mutate(
+    country_name = countrycode::countrycode(
+      country,
+      origin = "iso3c",
+      destination = "country.name"
+    ),
+    country_name = dplyr::recode(
+      country_name,
+      "United Kingdom" = "Reino Unido",
+      "Germany" = "Alemania",
+      "France" = "Francia",
+      "Spain" = "España",
+      "Portugal" = "Portugal"
+    )
+  ) %>%
+  group_by(country_name) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    lead_mean = mean(lead_time),
+    adr_mean = mean(adr),
+    .groups = "drop"
+  ) %>%
+  arrange(reservas)
+
+p2 <- ggplot(
+  country_summary,
+  aes(
+    x = reservas,
+    y = reorder(country_name, reservas),
+    color = cancel_rate,
+    text = paste0(
+      "País: ", country_name,
+      "<br>Número de reservas: ", scales::comma(reservas),
+      "<br>Cancelación: ", scales::percent(cancel_rate, accuracy = 0.1),
+      "<br>Antelación media: ", round(lead_mean, 1), " días",
+      "<br>ADR medio: ", round(adr_mean, 1)
+    )
+  )
+) +
+  geom_segment(
+    aes(x = 0, xend = reservas, yend = country_name),
+    color = "#D9D9D9",
+    linewidth = 1.2
+  ) +
+  geom_point(size = 6) +
+  geom_text(
+    aes(label = scales::comma(reservas)),
+    color = "#4a4a4a",
+    hjust = -0.2,
+    size = 4
+  ) +
+  scale_color_gradientn(
+    colours = c("#B7D3C0", "#D9C3B0", "#E7A2A2"),
+    labels = scales::label_percent()
+  ) +
+  labs(
+    x = "Reservas",
+    y = NULL,
+    color = "% cancelación"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#3f3f3f"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(color = "#4a4a4a"),
+    axis.text.y = element_text(color = "#4a4a4a"),
+    legend.position = "right",
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    panel.background = element_rect(fill = "#F5F5F5", color = NA)
+  ) +
+  expand_limits(x = max(country_summary$reservas) * 1.18)
+
+plotly::ggplotly(p2, tooltip = "text")
+```
+:::
+
+:::: {.column width="42%"}
+::: story-text
+<h3>¿Quién reserva más?¿Está relacionado con el porcentaje de cancelación?</h3>
+Los países no solo aportan cantidades distintas de viajeros. También reflejan diferentes ritmos de planificación, diferentes distancias y, probablemente, distintos tipos de viaje.
+
+Portugal, el país que más reservas aporta en su propia tierra, es también el que más cancela. Reino Unido le sigue en número de reservas, pero no en nivel de cancelaciones.
+
+Eso significa que la cancelación no es solo un rasgo individual, sino una conducta que también depende del contexto desde el que se reserva.
+:::
+::::
+::::::
+
+## El precio siempre es importante
+
+:::::: {.columns .section-space}
+::: {.column width="58%"}
+```{r}
+#| echo: false
+
+price_summary <- hotels_story %>%
+  mutate(
+    lead_bin_price = case_when(
+      lead_time <= 7 ~ "0-7 días",
+      lead_time <= 30 ~ "8-30 días",
+      lead_time <= 90 ~ "31-90 días",
+      lead_time <= 180 ~ "91-180 días",
+      lead_time <= 365 ~ "181-365 días",
+      TRUE ~ "+ 365 días"
+    ),
+    lead_bin_price = factor(
+      lead_bin_price,
+      levels = c("0-7 días", "8-30 días", "31-90 días", "91-180 días", "181-365 días", "+ 365 días")
+    )
+  ) %>%
+  group_by(lead_bin_price) %>%
+  summarise(
+    adr_mean = mean(adr, na.rm = TRUE),
+    reservas = n(),
+    .groups = "drop"
+  )
+
+p_price <- ggplot(
+  price_summary,
+  aes(
+    x = lead_bin_price,
+    y = adr_mean,
+    group = 1,
+    text = paste0(
+      "Anticipación: ", lead_bin_price,
+      "<br>Precio medio: ", round(adr_mean, 1), " €",
+      "<br>Reservas: ", scales::comma(reservas)
+    )
+  )
+) +
+  geom_line(color = "#B7D3C0", linewidth = 1.2) +
+  geom_point(color = "#B7D3C0", size = 3.5) +
+  geom_text(
+    aes(label = round(adr_mean, 1)),
+    vjust = -0.8,
+    color = "#4a4a4a",
+    size = 4
+  ) +
+  labs(
+    x = "Anticipación de la reserva",
+    y = "Precio medio por noche (€)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#3f3f3f"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(color = "#4a4a4a"),
+    axis.text.y = element_text(color = "#4a4a4a"),
+    axis.title = element_text(color = "#4a4a4a"),
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    panel.background = element_rect(fill = "#F5F5F5", color = NA)
+  )
+
+plotly::ggplotly(p_price, tooltip = "text")
+```
+:::
+
+:::: {.column width="42%"}
+::: story-text
+<h3>¿Sale más barato reservar con más antelación?</h3>
+La antelación no solo cambia la probabilidad de cancelar. También puede influir en el precio medio que paga el viajero.
+
+Aquí comparamos el ADR medio por tramos de antelación para ver si planificar con más tiempo se traduce realmente en reservas más baratas, o si el precio depende de otros factores como la temporada, el tipo de hotel o la demanda.
+:::
+::::
+::::::
+
+## Dos hoteles, dos ritmos de decisión
+
+:::::: {.columns .section-space}
+::: {.column width="58%"}
+```{r}
+#| echo: false
+
+hotel_cancel_lead <- hotels_story %>%
+  group_by(hotel, lead_bin) %>%
+  summarise(
+    reservas = n(),
+    cancel_rate = mean(is_canceled),
+    .groups = "drop"
+  )
+
+p4 <- ggplot(
+  hotel_cancel_lead,
+  aes(
+    x = lead_bin,
+    y = cancel_rate,
+    color = hotel,
+    group = hotel,
+    text = paste0(
+      "Hotel: ", hotel,
+      "<br>Anticipación: ", lead_bin,
+      "<br>% cancelación: ", scales::percent(cancel_rate, accuracy = 0.1),
+      "<br>Reservas: ", scales::comma(reservas)
+    )
+  )
+) +
+  geom_line(aes(group = lead_bin), color = "#D9D9D9", linewidth = 1) +
+  geom_point(
+    position = position_dodge(width = 0.35),
+    size = 4
+  ) +
+  scale_color_manual(values = c(
+    "City Hotel" = "#B7D3C0",
+    "Resort Hotel" = "#E7A2A2"
+  )) +
+  scale_y_continuous(labels = scales::label_percent()) +
+  labs(
+    x = "Anticipación de la reserva",
+    y = "% cancelación",
+    color = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#3f3f3f"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text.x = element_text(color = "#4a4a4a"),
+    axis.text.y = element_text(color = "#4a4a4a"),
+    axis.title = element_text(color = "#4a4a4a"),
+    legend.position = "top",
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    panel.background = element_rect(fill = "#F5F5F5", color = NA)
+  )
+
+plotly::ggplotly(p4, tooltip = "text")
+```
+:::
+
+:::: {.column width="42%"}
+::: story-text
+<h3>¿Hay diferencia entre un hotel de ciudad y un resort?</h3>
+Aquí la historia se divide en dos. Un hotel urbano y uno vacacional no representan el mismo tipo de decisión ni el mismo tipo de viaje.
+
+Por eso no basta con decir que “reservar antes aumenta la cancelación”. También importa qué tipo de experiencia hay detrás de esa reserva.
+:::
+::::
+::::::
+
+## Conclusiones
+
+::: {.story-fin}
+El calendario del hotel no siempre representa viajes decididos. Muchas reservas son, en realidad, decisiones provisionales: promesas abiertas que se sostienen mientras el viajero gana tiempo para comparar, pensar o cambiar de idea.
+
+Los datos muestran que esa lógica cambia según la anticipación, el país o el tipo de hotel. Pero la idea principal se mantiene: <b> en el turismo actual, reservar muchas veces ya no significa cerrar un plan, sino gestionar posibilidades.</b>
+:::
